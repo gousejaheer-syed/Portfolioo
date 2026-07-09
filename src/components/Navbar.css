@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+
+:root {
+    /* Backgrounds */
+    --bg-primary: #08110E;
+    --bg-secondary: #111A17;
+    --bg-elevated: #18231F;
+
+    /* Accent */
+    --accent-primary: #2FA36B;
+    --accent-hover: #39B97B;
+    --accent-deep: #217A4F;
+    --accent-glow: rgba(47,163,107,.30);
+
+    /* Secondary */
+    --secondary: #60756D;
+    --secondary-light: #83978F;
+
+    /* Text */
+    --text-heading: #F5FAF8;
+    --text-body: #B2C3BB;
+    --text-muted: #74867F;
+
+    /* Borders */
+    --border-subtle: rgba(255,255,255,.07);
+    --border-accent: rgba(47,163,107,.35);
+}
+
+/* ==========================================================================
+   Navbar — frosted glass, premium feel
+   ========================================================================== */
+
+.navbar {
+    position: sticky;
+    top: 1.5rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0.85rem 1.5rem;
+
+    background: linear-gradient(
+            180deg,
+            rgba(245,250,248,.08),
+            rgba(245,250,248,.03)
+    );
+
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+
+    box-shadow:
+            0 10px 40px rgba(0,0,0,.45),
+            0 1px 0 rgba(245,250,248,.06) inset,
+            0 -1px 0 rgba(0,0,0,.2) inset;
+
+    transition:
+            background .35s ease,
+            border-color .35s ease,
+            box-shadow .35s ease;
+}
+
+.navbar-container:hover {
+    border-color: var(--border-accent);
+
+    box-shadow:
+            0 12px 48px rgba(0,0,0,.5),
+            0 1px 0 rgba(245,250,248,.09) inset,
+            0 -1px 0 rgba(0,0,0,.2) inset;
+}
+
+/* ---- Brand ---- */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-shrink: 0;
+}
+
+@keyframes brandPulse {
+    0%,100% { opacity:1; }
+    50% { opacity:.45; }
+}
+
+.brand-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-heading);
+}
+
+/* ---- Links ---- */
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 0; /* Removed gap to ensure padding is the only spacing */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 2rem; /* Increased horizontal padding for wide, even spacing */
+
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+
+    color: var(--text-body);
+    text-decoration: none;
+
+    transition:
+            color .25s ease,
+            font-weight .25s ease;
+}
+
+.nav-item:hover {
+    color: var(--text-heading);
+}
+
+.nav-item.active {
+    color: var(--accent-primary);
+    font-weight: 600;
+}
+
+/* ---- CTA ---- */
+
+.navbar-actions {
+    flex-shrink: 0;
+}
+
+.btn-resume {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--bg-primary);
+    background: linear-gradient(180deg, var(--accent-primary), var(--accent-deep));
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.18) inset;
+    transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease;
+}
+
+.btn-resume:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.3), 0 0 20px var(--accent-glow), 0 1px 0 rgba(255,255,255,.22) inset;
+}
+
+.btn-resume:active {
+    transform: translateY(0);
+}
+
+/* ---- Responsiveness ---- */
+
+@media (max-width: 900px) {
+    .navbar-links {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 0 1rem;
+        top: 1rem;
+    }
+    .navbar-container {
+        padding: 0.7rem 1.1rem;
+    }
+    .brand-text {
+        font-size: 1rem;
+    }
+}
+
+/* Fallback */
+
+@supports not (backdrop-filter: blur(1px)) {
+    .navbar-container {
+        background: rgba(8,17,14,.92);
+    }
+}
+.navbar-actions {
+    display: flex;
+    gap: 1.5rem; /* Space between icons */
+    align-items: center;
+}
+
+.social-icon {
+    color: var(--text-body); /* Or use your specific theme variable */
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    opacity: 0.7; /* Initial transparent look */
+}
+
+.social-icon:hover {
+    opacity: 1; /* Become fully opaque on hover */
+    color: var(--accent-primary); /* Use your theme's accent color */
+    transform: translateY(-2px);
+}

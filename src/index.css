@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   Premium Emerald & Black Design Tokens
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+:root {
+    /* Backgrounds */
+    --bg-primary: #050505;
+    --bg-secondary: #0A0A0A;
+    --bg-elevated: #121212;
+
+    /* Emerald Green Accents */
+    --accent-primary: #2FE880;
+    --accent-hover: #45F593;
+    --accent-deep: #22B862;
+    --accent-glow: rgba(47, 232, 128, 0.15);
+
+    /* Text */
+    --text-heading: #F5F7F6;
+    --text-body: #A1A3A2;
+    --text-muted: #5C5F5E;
+
+    /* Borders */
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-accent: rgba(47, 232, 128, 0.2);
+}
+
+/* ==========================================================================
+   Global Reset & Scroll Management
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-heading);
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Section Layout (The "Tight" Fix)
+   ========================================================================== */
+
+section {
+    width: 100%;
+    /* Unified padding for consistent, clean spacing */
+    padding: 5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Home stays full-screen for impact */
+#home {
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Contact section tightened at the bottom */
+#contact {
+    padding-bottom: 3rem;
+}
+
+.bg-premium-black {
+    background: var(--bg-primary) !important;
+}
+
+.bg-premium-grey {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%) !important;
+}
+
+/* ==========================================================================
+   Mobile
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    section {
+        padding: 3rem 1rem;
+        min-height: auto;
+    }
+
+    #home {
+        min-height: 100vh;
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+    --bg-primary: #050505;
+    --bg-secondary: #0A0A0A;
+    --bg-elevated: #121212;
+    --accent-primary: #2FE880;
+    --text-heading: #F5F7F6;
+    --text-body: #A1A3A2;
+    --border-subtle: rgba(255, 255, 255, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; height: 100%; }
+
+body {
+    background: var(--bg-primary);
+    color: var(--text-heading);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Mono", "JetBrains Mono", sans-serif;
+    min-height: 100vh;
+    overflow-y: auto;
+    letter-spacing: -0.01em;
+}
+
+section {
+    width: 100%;
+    padding: 5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#home { min-height: 100vh; padding: 0; }
+.bg-premium-black { background: var(--bg-primary) !important; }
+.bg-premium-grey { background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%) !important; }

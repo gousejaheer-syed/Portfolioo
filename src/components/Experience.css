@@ -1,0 +1,49 @@
+.experience-container {
+    padding: 8rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    margin-bottom: 3rem;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.exp-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    padding: 2rem;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+.exp-card:hover {
+    border-color: var(--border-accent);
+}
+
+.exp-card h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+}
+
+.exp-company {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.exp-card p {
+    color: var(--text-body);
+    line-height: 1.6;
+}

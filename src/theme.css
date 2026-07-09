@@ -1,0 +1,26 @@
+
+:root {
+    /* Backgrounds */
+    --bg-primary: #08110E;
+    --bg-secondary: #111A17;
+    --bg-elevated: #18231F;
+
+    /* Accent */
+    --accent-primary: #2FA36B;
+    --accent-hover: #39B97B;
+    --accent-deep: #217A4F;
+    --accent-glow: rgba(47, 163, 107, .30);
+
+    /* Secondary */
+    --secondary: #60756D;
+    --secondary-light: #83978F;
+
+    /* Text */
+    --text-heading: #F5FAF8;
+    --text-body: #B2C3BB;
+    --text-muted: #74867F;
+
+    /* Borders */
+    --border-subtle: rgba(255, 255, 255, .07);
+    --border-accent: rgba(47, 163, 107, .35);
+}

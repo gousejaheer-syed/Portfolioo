@@ -1,0 +1,20 @@
+body {
+    background: var(--bg-primary);
+    color: var(--text-body);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--text-heading);
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}

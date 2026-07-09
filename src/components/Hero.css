@@ -1,0 +1,373 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   Dark Emerald Theme
+   ========================================================================== */
+
+:root {
+    /* Backgrounds */
+    --bg-primary: #08110E;
+    --bg-secondary: #111A17;
+    --bg-elevated: #18231F;
+
+    /* Accent */
+    --accent-primary: #2FA36B;
+    --accent-hover: #39B97B;
+    --accent-deep: #217A4F;
+    --accent-glow: rgba(47,163,107,.30);
+
+    /* Secondary */
+    --secondary: #60756D;
+    --secondary-light: #83978F;
+
+    /* Text */
+    --text-heading: #F5FAF8;
+    --text-body: #B2C3BB;
+    --text-muted: #74867F;
+
+    /* Borders */
+    --border-subtle: rgba(255,255,255,.07);
+    --border-accent: rgba(47,163,107,.35);
+}
+
+/* ==========================================================================
+   Desktop Global & Container Styles
+   ========================================================================== */
+
+.hero {
+    background-color: var(--bg-primary);
+    color: var(--text-heading);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11rem 2rem 8rem;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    box-sizing: border-box;
+}
+
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.hero-tag {
+    display: none !important;
+}
+
+.hero-title {
+    font-size: 5.4rem;
+    font-weight: 800;
+    line-height: .95;
+    margin: 0 0 .6rem;
+    letter-spacing: -.04em;
+    color: var(--text-heading);
+}
+
+.name-highlight {
+    background: linear-gradient(
+            180deg,
+            var(--text-heading) 35%,
+            var(--accent-primary) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    margin: 0;
+    letter-spacing: -.03em;
+}
+
+.hero-location {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-body);
+    margin: 0 0 1.25rem;
+}
+.hero-desc {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--text-heading);
+    max-width: 550px;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-subtext {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--text-body);
+    max-width: 500px;
+    margin: 0 0 2rem;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Buttons & Media Elements
+   ========================================================================== */
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(
+            135deg,
+            var(--accent-primary) 0%,
+            var(--accent-deep) 100%
+    );
+    color: var(--text-heading);
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition:
+            background 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(
+            135deg,
+            var(--accent-hover) 0%,
+            var(--accent-primary) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px var(--accent-glow);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-body);
+    border: 1px solid var(--border-subtle);
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition:
+            color 0.3s ease,
+            border-color 0.3s ease,
+            background 0.3s ease;
+}
+
+.btn-secondary:hover {
+    color: var(--text-heading);
+    border-color: var(--border-accent);
+    background: rgba(47, 163, 107, 0.05);
+}
+
+.hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+    /* Add padding so the glow has space to render without being cut off */
+    padding: 40px;
+}
+
+.image-glow-effect {
+    position: relative;
+    border-radius: 28px;
+    background: var(--bg-primary);
+    padding: 2px;
+
+    /* Layered shadow for cinematic depth */
+    box-shadow:
+            0 0 20px rgba(47, 163, 107, 0.1), /* Inner soft layer */
+            0 0 60px rgba(47, 163, 107, 0.2), /* Mid range glow */
+            0 0 120px rgba(47, 163, 107, 0.15); /* Deep, far-reaching ambient light */
+
+    overflow: visible; /* Prevents clipping */
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Premium ease */
+}
+
+/* Enhancing the hover state to feel more "responsive" */
+.image-glow-effect:hover {
+    box-shadow:
+            0 0 30px rgba(47, 163, 107, 0.2),
+            0 0 100px rgba(47, 163, 107, 0.35),
+            0 0 200px rgba(47, 163, 107, 0.25);
+    transform: translateY(-5px); /* Gentle float effect */
+}
+
+.hero-profile-img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 26px;
+    object-fit: cover;
+    display: block;
+}
+/* ==========================================================================
+   Mobile Viewport Adjustments
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+    .hero {
+        align-items: flex-start;
+        padding: 70px 1.25rem 2.5rem 1.25rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: auto;
+        gap: 2rem;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .hero-text-block {
+        max-width: 100%;
+        order: 1;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .hero-title {
+        font-size: 3.6rem;
+        margin-top: 0 !important;
+    }
+
+    .hero-image-wrapper {
+        display: flex;
+        justify-content: center;
+        max-width: 260px;
+        margin: 0 auto;
+        order: 2;
+    }
+
+    .hero-actions {
+        margin-bottom: 0rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: fit-content;
+    }
+
+}
+
+/* ==========================================================================
+   Interactive States
+   ========================================================================== */
+
+.name-highlight,
+.hero-subtitle {
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.image-glow-effect {
+    transition: box-shadow 0.35s ease;
+}
+
+.image-glow-effect:hover {
+    box-shadow:
+            0 0 90px 18px var(--accent-glow);
+}
+
+.hero-profile-img {
+    transition: transform 0.35s ease;
+}
+
+.hero-profile-img:hover {
+    transform: scale(1.01);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 3px;
+}
+.btn-secondary {
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    color: var(--text-body);
+    border: 1px solid var(--border-subtle);
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%; /* Start far left */
+    width: 50%; /* Luminous soft-width */
+    height: 200%;
+    background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.15), /* Soft, premium luminous white */
+            rgba(255, 255, 255, 0.05),
+            transparent
+    );
+    transform: rotate(25deg); /* Elegant tilt */
+    filter: blur(8px); /* The "Harmonious" soft blur */
+    transition: none;
+}
+
+.btn-secondary:hover::after {
+    left: 60%; /* Stop at 1/3 (approx) of the button width */
+    transition: left 2.5s cubic-bezier(0.22, 1, 0.36, 1); /* Very slow, organic, premium ease */
+}
+
+.btn-secondary:hover {
+    color: var(--text-heading);
+    border-color: var(--accent-primary);
+    background: rgba(47, 163, 107, 0.08); /* Harmonious emerald glow */
+}
