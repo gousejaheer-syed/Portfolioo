@@ -1,5 +1,7 @@
 import React from 'react';
 import './Hero.css';
+// 1. You imported it as 'profileImage'
+import profileImage from '../assets/profile.jpg';
 
 function Hero() {
     return (
@@ -32,12 +34,10 @@ function Hero() {
                     </p>
 
                     <div className="hero-actions">
-                        {/* Smooth scroll to projects section */}
                         <a href="#projects" className="btn-primary" style={{ textDecoration: 'none' }}>
                             VIEW MY WORK <span className="arrow">→</span>
                         </a>
 
-                        {/* Trigger PDF download */}
                         <a
                             href="/your-cv.pdf"
                             download="Jaheer_CV.pdf"
@@ -49,11 +49,11 @@ function Hero() {
                     </div>
                 </div>
 
-                {/* Right Image Column */}
+                {/* Right Image Column with Premium Glow */}
                 <div className="hero-image-wrapper">
                     <div className="image-glow-effect">
                         <img
-                            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=1000"
+                            src={profileImage} /* 2. This must match the import name exactly */
                             alt="Jaheer - Java Backend Developer"
                             className="hero-profile-img"
                         />
