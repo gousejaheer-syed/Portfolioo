@@ -3,6 +3,13 @@ import './Hero.css';
 import profileImage from '../assets/profile.jpg';
 
 function Hero() {
+    const handleDownloadCV = () => {
+        // Because it is in 'public', you use the forward slash '/'
+        const audio = new Audio('/sound.mp3');
+        audio.play().catch(error => {
+            console.error("Audio failed to play:", error);
+        });
+    };
     return (
         <section className="hero">
             <div className="hero-container">
@@ -37,18 +44,20 @@ function Hero() {
                             VIEW MY WORK <span className="arrow">↓</span>
                         </a>
 
+                        {/* 2. Added the onClick handler here */}
                         <a
                             href="/your-cv.pdf"
                             download="Jaheer_CV.pdf"
                             className="btn-secondary"
                             style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+                            onClick={handleDownloadCV}
                         >
                             DOWNLOAD CV
                         </a>
                     </div>
                 </div>
 
-                {/* Right Image Column: Glow Added Here */}
+                {/* Right Image Column */}
                 <div className="hero-image-wrapper">
                     <div className="image-glow-effect"></div>
                     <img
