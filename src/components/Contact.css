@@ -1,270 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.contact-card {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.contact-right .contact-card:nth-child(1) { animation-delay: 0.2s; }
+.contact-right .contact-card:nth-child(2) { animation-delay: 0.3s; }
+.contact-right .contact-card:nth-child(3) { animation-delay: 0.4s; }
+.contact-right .contact-card:nth-child(4) { animation-delay: 0.5s; }
+.contact-right .contact-card:nth-child(5) { animation-delay: 0.6s; }
+
+.contact-card:hover {
+    transform: translateY(-4px);
+    transition: transform 0.3s ease, background .3s ease, border-color .3s ease;
+}
+
+/* ==========================================================================
    Premium Molten Copper Theme
    ========================================================================== */
 :root {
-    /* Backgrounds */
     --bg-primary: #08110E;
     --bg-secondary: #111A17;
     --bg-elevated: #18231F;
-
-    /* Accent */
     --accent-primary: #2FA36B;
     --accent-hover: #39B97B;
     --accent-deep: #217A4F;
     --accent-glow: rgba(47, 163, 107, .30);
-
-    /* Secondary */
     --secondary: #60756D;
     --secondary-light: #83978F;
-
-    /* Text */
     --text-heading: #F5FAF8;
     --text-body: #B2C3BB;
     --text-muted: #74867F;
-
-    /* Borders */
     --border-subtle: rgba(255, 255, 255, .07);
     --border-accent: rgba(47, 163, 107, .35);
 }
 
-/* ==========================================================================
-   Structural Layout
-   ========================================================================== */
-
-.bg-premium-grey{
-    background:var(--bg-primary)!important;
-    color:var(--text-heading);
-    width:100%;
+/* Structural Layout */
+.bg-premium-grey { background:var(--bg-primary)!important; color:var(--text-heading); width:100%; }
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem; /* Reduce top/bottom padding to tighten the area */
+    display: flex;
+    flex-direction: column;
 }
 
-.contact-container{
-    max-width:1100px;
-    margin:0 auto;
-    padding:7rem 2rem 3rem;
-    box-sizing:border-box;
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Ensures left/right balance */
+    gap: 4rem; /* Controls the space between the text and the cards */
+    align-items: start; /* CHANGED: This prevents the cards from stretching */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
+/* Left Side */
+.contact-left h2 { font-family:'Plus Jakarta Sans',sans-serif; font-size:2.8rem; font-weight:800; line-height:1.15; margin-bottom:1.2rem; color:var(--text-heading); letter-spacing:-.03em; }
+.contact-left p { font-family:'JetBrains Mono',monospace; color:var(--text-body); font-size:.95rem; margin-bottom:2.5rem; line-height:1.65; letter-spacing:-.01em; }
+.contact-btn { display:inline-block; background:var(--accent-primary); color:#fff; padding:.9rem 2rem; border-radius:12px; font-weight:600; text-decoration:none; transition:background .2s ease; }
+.contact-btn:hover { background:var(--accent-hover); }
 
-.contact-wrapper{
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    gap:5rem;
-    align-items:center;
-    margin-bottom:6rem;
-}
+/* Cards */
+.contact-right { display:flex; flex-direction:column; gap:1.2rem; }
+.contact-card { display:flex; align-items:center; gap:1.5rem; padding:1.25rem 1.5rem; border-radius:16px; text-decoration:none; box-sizing:border-box; position:relative; background:linear-gradient(135deg, rgba(22,23,26,.75) 0%, rgba(11,12,14,.92) 100%); border:1px solid var(--border-subtle); transition: background .3s ease, border-color .3s ease; }
+.contact-card.static { cursor:default; }
+.contact-card small { font-family:'JetBrains Mono',monospace; font-size:.7rem; color:var(--secondary-light); display:block; letter-spacing:.12em; margin-bottom:.25rem; }
+.contact-card h4 { font-family:'JetBrains Mono',monospace; font-size:1rem; font-weight:500; color:var(--text-body); letter-spacing:-.015em; transition:color .2s ease; }
 
-/* ==========================================================================
-   Left Side
-   ========================================================================== */
+/* Icons */
+.icon { width:44px; height:44px; display:flex; align-items:center; justify-content:center; box-sizing:border-box; flex-shrink:0; overflow:hidden; border-radius:11px; background:transparent!important; border:none!important; box-shadow:none!important; filter:none!important; }
+.icon svg { width:100%; height:100%; display:block; }
 
-.contact-left h2{
-    font-family:'Plus Jakarta Sans',sans-serif;
-    font-size:2.8rem;
-    font-weight:800;
-    line-height:1.15;
-    margin-bottom:1.2rem;
-    color:var(--text-heading);
-    letter-spacing:-.03em;
-}
+/* Hover Effects */
+.contact-card:hover h4 { color:var(--text-heading); }
+.card-email:hover { border-color:var(--border-accent); background:linear-gradient(135deg, rgba(232,128,79,.08) 0%, rgba(11,12,14,.92) 100%); }
+.card-github:hover { border-color:var(--border-accent); background:linear-gradient(135deg, rgba(232,128,79,.05) 0%, rgba(11,12,14,.92) 100%); }
+.card-linkedin:hover { border-color:var(--border-accent); background:linear-gradient(135deg, rgba(232,128,79,.06) 0%, rgba(11,12,14,.92) 100%); }
+.card-location:hover { border-color:var(--border-accent); background:linear-gradient(135deg, rgba(232,128,79,.05) 0%, rgba(11,12,14,.92) 100%); }
+.card-phone:hover { border-color:var(--border-accent); background:linear-gradient(135deg, rgba(52, 168, 83, .08) 0%, rgba(11, 12, 14, .92) 100%); }
 
-.contact-left p{
-    font-family:'JetBrains Mono',monospace;
-    color:var(--text-body);
-    font-size:.95rem;
-    margin-bottom:2.5rem;
-    line-height:1.65;
-    letter-spacing:-.01em;
-}
-
-.contact-btn{
-    display:inline-block;
-    background:var(--accent-primary);
-    color:#fff;
-    padding:.9rem 2rem;
-    border-radius:12px;
-    font-weight:600;
-    text-decoration:none;
-    transition:background .2s ease;
-}
-
-.contact-btn:hover{
-    background:var(--accent-hover);
-}
-
-/* ==========================================================================
-   Cards
-   ========================================================================== */
-
-.contact-right{
-    display:flex;
-    flex-direction:column;
-    gap:1.2rem;
-}
-
-.contact-card{
-    display:flex;
-    align-items:center;
-    gap:1.5rem;
-    padding:1.25rem 1.5rem;
-    border-radius:16px;
-    text-decoration:none;
-    box-sizing:border-box;
-    position:relative;
-
-    background:linear-gradient(
-            135deg,
-            rgba(22,23,26,.75) 0%,
-            rgba(11,12,14,.92) 100%
-    );
-
-    border:1px solid var(--border-subtle);
-
-    transition:
-            background .3s ease,
-            border-color .3s ease;
-}
-
-.contact-card.static{
-    cursor:default;
-}
-
-.contact-card small{
-    font-family:'JetBrains Mono',monospace;
-    font-size:.7rem;
-    color:var(--secondary-light);
-    display:block;
-    letter-spacing:.12em;
-    margin-bottom:.25rem;
-}
-
-.contact-card h4{
-    font-family:'JetBrains Mono',monospace;
-    font-size:1rem;
-    font-weight:500;
-    color:var(--text-body);
-    letter-spacing:-.015em;
-    transition:color .2s ease;
-}
-
-/* ==========================================================================
-   Icons
-   ========================================================================== */
-
-.icon{
-    width:44px;
-    height:44px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-sizing:border-box;
-    flex-shrink:0;
-    overflow:hidden;
-    border-radius:11px;
-
-    background:transparent!important;
-    border:none!important;
-    box-shadow:none!important;
-    filter:none!important;
-}
-
-.icon svg{
-    width:100%;
-    height:100%;
-    display:block;
-}
-
-/* ==========================================================================
-   Hover Effects
-   ========================================================================== */
-
-.contact-card:hover h4{
-    color:var(--text-heading);
-}
-
-/* Gmail */
-
-.card-email:hover{
-    border-color:var(--border-accent);
-
-    background:linear-gradient(
-            135deg,
-            rgba(232,128,79,.08) 0%,
-            rgba(11,12,14,.92) 100%
-    );
-}
-
-/* GitHub */
-
-.card-github:hover{
-    border-color:var(--border-accent);
-
-    background:linear-gradient(
-            135deg,
-            rgba(232,128,79,.05) 0%,
-            rgba(11,12,14,.92) 100%
-    );
-}
-
-/* LinkedIn */
-
-.card-linkedin:hover{
-    border-color:var(--border-accent);
-
-    background:linear-gradient(
-            135deg,
-            rgba(232,128,79,.06) 0%,
-            rgba(11,12,14,.92) 100%
-    );
-}
-
-/* Location */
-
-.card-location:hover{
-    border-color:var(--border-accent);
-
-    background:linear-gradient(
-            135deg,
-            rgba(232,128,79,.05) 0%,
-            rgba(11,12,14,.92) 100%
-    );
-}
-
-/* ==========================================================================
-   Footer
-   ========================================================================== */
-
-.footer-bar{
-    border-top:1px solid var(--border-subtle);
-    padding-top:2.5rem;
-    text-align:center;
-}
-
-.footer-bar p{
-    font-family:'JetBrains Mono',monospace;
-    font-size:.8rem;
-    color:var(--text-muted);
-    letter-spacing:.01em;
-}
-
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
-
-@media (max-width:850px){
-
-    .contact-wrapper{
-        grid-template-columns:1fr;
-        gap:4rem;
-        text-align:center;
-    }
-
-    .contact-left h2{
-        font-size:2.2rem;
-    }
-
-    .contact-card{
-        text-align:left;
-    }
-
+/* Footer & Responsive */
+.footer-bar { border-top:1px solid var(--border-subtle); padding-top:2.5rem; text-align:center; }
+.footer-bar p { font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--text-muted); letter-spacing:.01em; }
+@media (max-width:850px) { .contact-wrapper { grid-template-columns:1fr; gap:4rem; text-align:center; } .contact-left h2 { font-size:2.2rem; } .contact-card { text-align:left; } }
+#contact {
+    min-height: auto; /* Allow the section to wrap only its content */
+    padding-bottom: 4rem;
 }

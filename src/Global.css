@@ -18,3 +18,81 @@ h3 {
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+/* ==========================================================================
+   Standardized Section Headings
+   ========================================================================== */
+
+/* The // Label (e.g., // About Me) */
+.pre-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* The Main Title (e.g., Technical Expertise) */
+.main-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 2.8rem;
+    color: var(--text-heading);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   Shared Section Container
+   ========================================================================== */
+
+.section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   SECTION SPACING FIX — Single Source of Truth
+   ========================================================================== */
+
+body .about-container,
+body .skills-container,
+body .projects-section,
+body .experience-section,
+body .contact-container {
+    padding: 6rem 2rem 5rem !important;
+    box-sizing: border-box !important;
+}
+
+/* Shared header spacing */
+body .about-header {
+    max-width: 800px !important;
+    margin-bottom: 3rem !important;
+}
+/* This makes the scroll target "look" lower down the page */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Adjust this value to match your Navbar's height */
+}
+/* Apply to all your main section containers */
+section, .skills-container, .contact-container {
+    min-height: auto !important; /* Removes the forced 100vh stretch */
+    padding-top: 4rem;          /* Controls space from the top label */
+    padding-bottom: 4rem;
+}
+section {
+    width: 100%;
+    padding: 5rem 2rem;
+    display: flex;
+    flex-direction: column;    /* Stack content vertically */
+    align-items: flex-start;   /* ALIGNS CONTENT TO THE TOP */
+    justify-content: flex-start; /* ALIGNS CONTENT TO THE TOP */
+    position: relative;
+    min-height: auto;          /* Let section grow with content */
+}
+/* This keeps your labels ("// CONTACT") at the very top of each section */
+.about-header {
+    margin-bottom: 2rem;        /* Tightens the space under the label */
+}

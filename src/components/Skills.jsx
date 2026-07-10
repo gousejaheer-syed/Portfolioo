@@ -92,13 +92,15 @@ function Skills() {
     return (
         <div className="skills-container">
             <div className="skills-wrapper">
+                <div className="skills-hero">
+                    <h1 className="skills-title">
+                        Technical Expertise
+                    </h1>
 
-                <div className="skills-header">
-                    <span className="skills-eyebrow">// Core Competencies</span>
-                    <h2 className="skills-title">Technical Expertise</h2>
-                    {/* Applied the skills-lead class for the monospaced font effect */}
-                    <p className="skills-lead">
-                        A comprehensive breakdown of my backend engineering framework stack, architectural capabilities, and environments.
+                    <p className="skills-description">
+                        A comprehensive breakdown of my backend engineering,
+                        framework stack, architectural capabilities,
+                        and development environment.
                     </p>
                 </div>
 
@@ -115,18 +117,22 @@ function Skills() {
                             <div className="skill-pills-container">
                                 {cat.items.map((item, itemIdx) => (
                                     <span className="skill-pill" key={itemIdx}>
-                                        <img src={item.logo} alt={`${item.name} logo`} className="pill-logo" />
+                                    <img
+                                        src={item.logo}
+                                        alt={`${item.name} logo`}
+                                        className="pill-logo"
+                                    />
                                         {item.name}
-                                    </span>
+                                </span>
                                 ))}
                             </div>
+
+                            <div className="accent-bar"></div>
                         </div>
                     ))}
                 </div>
 
             </div>
         </div>
-    );
-}
-
+    );}
 export default Skills;

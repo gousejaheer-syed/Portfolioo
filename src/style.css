@@ -1,0 +1,24 @@
+/* Add these to your existing :root { } block in style.css / Global.css
+   These are the variables Projects.css and Experience.css reference
+   that aren't currently defined anywhere. */
+
+:root {
+    /* already have these — keep as-is */
+    /* --bg-primary, --bg-secondary, --bg-elevated,
+       --accent-primary, --text-heading, --text-body, --border-subtle */
+
+    /* ADD these missing ones */
+    --accent-hover: #45F593;
+    --accent-deep: #22B862;
+    --accent-glow: rgba(47, 232, 128, 0.15);
+    --accent-border: rgba(47, 232, 128, 0.2);
+    --accent-bg-subtle: rgba(47, 232, 128, 0.08);
+
+    --secondary: #3A5148;
+    --secondary-light: #5A7268;
+
+    --text-muted: #5C5F5E;
+
+    --border-card: rgba(255, 255, 255, 0.08);
+    --divider: rgba(255, 255, 255, 0.08);
+}

@@ -4,21 +4,18 @@
 /* ==========================================================================
    Premium Molten Copper Theme
    ========================================================================== */
+
 :root {
     /* Backgrounds */
     --bg-primary: #0B0C0E;
-    --bg-secondary: #16171A;
-    --bg-elevated: #1F2124;
+    --bg-secondary: #0f0f0f;
+    --bg-elevated: #16171A;
 
-    /* Accent */
-    --accent-primary: #E8804F;
-    --accent-hover: #F5935F;
-    --accent-deep: #B8622F;
-    --accent-glow: rgba(232, 128, 79, 0.3);
-
-    /* Secondary */
-    --secondary: #5B6472;
-    --secondary-light: #7A8494;
+    /* Green Accent */
+    --accent-primary: #2fa36b;
+    --accent-hover: #3bc583;
+    --accent-deep: #1e6d47;
+    --accent-glow: rgba(47, 163, 107, 0.2);
 
     /* Text */
     --text-heading: #F7F5F2;
@@ -27,7 +24,7 @@
 
     /* Borders */
     --border-subtle: rgba(255,255,255,.07);
-    --border-accent: rgba(232,128,79,.35);
+    --border-accent: rgba(47, 163, 107, 0.3);
 }
 
 /* ==========================================================================
@@ -37,12 +34,9 @@
 .skills-container {
     width: 100%;
     min-height: 100vh;
-    padding: 8rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-
     background: var(--bg-primary);
 }
 
@@ -55,11 +49,14 @@
     max-width: 700px;
     margin-bottom: 4rem;
 }
+
 /* Apply this to the paragraph class containing your description */
+
 .skills-lead {
     font-family: 'JetBrains Mono', monospace;
-    letter-spacing: -0.01em; /* Optional: tightens the mono font for a premium look */
+    letter-spacing: -0.01em;
 }
+
 .skills-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: .88rem;
@@ -86,19 +83,18 @@
     line-height: 1.65;
     color: var(--text-body);
 }
-
 /* ==========================================================================
    Grid
    ========================================================================== */
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
 .skills-card {
-    background: rgba(22,23,26,.55);
+    background: rgba(22, 23, 26, .55);
     border: 1px solid var(--border-subtle);
     border-radius: 24px;
     padding: 2.2rem;
@@ -106,11 +102,11 @@
     flex-direction: column;
     justify-content: flex-start;
 
-    transition: all .4s cubic-bezier(.16,1,.3,1);
+    transition: all .4s cubic-bezier(.16, 1, .3, 1);
 }
 
 .skills-card:hover {
-    background: rgba(31,33,36,.9);
+    background: rgba(31, 33, 36, .9);
     border-color: var(--border-accent);
     transform: translateY(-4px);
 }
@@ -125,16 +121,20 @@
 .skill-logo-box {
     width: 40px;
     height: 40px;
-
-    background: rgba(232,128,79,.06);
+    background: rgba(47, 163, 107, 0.06); /* Subtle green background */
     border: 1px solid var(--border-accent);
-
     border-radius: 12px;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s ease;
 }
+
+.skills-card:hover .skill-logo-box {
+    background: rgba(47, 163, 107, 0.15); /* Becomes brighter green on hover */
+    box-shadow: 0 0 15px rgba(47, 163, 107, 0.1);
+}
+
 
 .skill-icon-glyph {
     font-size: 1.1rem;
@@ -148,6 +148,7 @@
     color: var(--text-heading);
     letter-spacing: -.03em;
 }
+
 /* ==========================================================================
    Skill Pills
    ========================================================================== */
@@ -185,11 +186,16 @@
 }
 
 .skills-card:hover .skill-pill {
-    background: rgba(232, 128, 79, 0.06);
+    background: rgba(47, 163, 107, 0.08); /* Green tint on hover */
     border-color: var(--border-accent);
     color: var(--text-heading);
 }
 
+.skill-pill:hover {
+    transform: translateY(-2px);
+    background: rgba(47, 163, 107, 0.12);
+    border-color: var(--accent-primary);
+}
 /* ==========================================================================
    Animated Logos
    ========================================================================== */
@@ -232,7 +238,7 @@ img[alt="GitHub logo"] {
 
 @keyframes pillLogoBounce {
 
-    0%,100% {
+    0%, 100% {
         transform: translateY(0) scale(1) rotate(0deg);
     }
 
@@ -274,16 +280,11 @@ img[alt="GitHub logo"] {
 
 /* Hover behaviour */
 
-.skill-pill:hover {
-    transform: translateY(-2px);
-    background: rgba(232, 128, 79, 0.08);
-    border-color: var(--border-accent);
-    color: var(--text-heading);
-}
 
 .skill-pill:hover .pill-logo {
     animation-duration: 0.6s;
 }
+
 /* ==========================================================================
    Accessibility
    ========================================================================== */
@@ -295,6 +296,7 @@ img[alt="GitHub logo"] {
     }
 
 }
+
 /* ==========================================================================
    Responsive Layout
    ========================================================================== */
@@ -315,7 +317,47 @@ img[alt="GitHub logo"] {
     }
 
     .skills-card {
-        padding: 1.5rem;
+        position: relative;
+        background: #0f0f0f; /* Deep dark base */
+        border: 1px solid #1a1a1a;
+        border-radius: 24px;
+        padding: 2.5rem;
+        overflow: hidden; /* Important: Keeps the glow inside the card */
+        transition: all 0.4s ease;
+    }
+
+    /* The "Soft Glow" Layer */
+    .skills-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(47, 163, 107, 0.15) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none; /* Makes the glow ignore mouse clicks */
+    }
+
+    /* Interaction: Activate Glow and Border */
+    .skills-card:hover::before {
+        opacity: 1;
+    }
+
+    /* The Accent Bar at the bottom */
+    .accent-bar {
+        width: 50px;
+        height: 3px;
+        background: #222; /* Dim by default */
+        margin: 1.5rem auto 0;
+        transition: background 0.3s ease;
+    }
+
+    /* Interaction: Accent Bar turns Green */
+    .skills-card:hover .accent-bar {
+        background: var(--accent-primary); /* Your defined green */
+        box-shadow: 0 0 10px var(--accent-primary);
     }
 
 }
@@ -351,16 +393,106 @@ img[alt="GitHub logo"] {
    ========================================================================== */
 
 /* GitHub → White */
+
 img[alt="GitHub logo"] {
     filter: brightness(0) invert(1);
 }
 
 /* Windows → Original Brand Color */
+
 img[alt="Windows logo"] {
     filter: none !important;
 }
 
 /* macOS → White */
+
 img[alt="macOS logo"] {
     filter: brightness(0) invert(1);
+
+    section {
+        background: red !important;
+    }}
+/* ==========================================================================
+   Technical Expertise Hero
+   ========================================================================== */
+
+.skills-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    margin: 0 auto 3rem;
+    padding: 1rem 0;
+    box-sizing: border-box;
+}
+
+.skills-title{
+    margin:0;
+
+    font-family:'Inter', sans-serif;
+    font-size:clamp(2.7rem,5.6vw,4.25rem);
+    font-weight:900;
+    line-height:.95;
+    letter-spacing:-2px;
+
+    /* White → Grey Gradient */
+    background:linear-gradient(
+            to bottom,
+            #FFFFFF 30%,
+            #A0A5AA 100%
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent;
+
+    text-shadow:
+            0 8px 20px rgba(0,0,0,.45),
+            0 18px 40px rgba(0,0,0,.25);
+}
+
+.skills-description{
+    max-width:760px;
+    margin-top:1.8rem;
+
+    font-family:'JetBrains Mono', monospace;
+    font-size:1.05rem;
+    font-weight:400;
+    line-height:1.9;
+    letter-spacing:-0.01em;
+
+    color:var(--text-body);
+}
+
+.skills-description strong{
+    color:var(--text-heading);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width:768px){
+
+    .skills-hero{
+        min-height:40vh;
+        margin-bottom:3rem;
+    }
+
+    .skills-title{
+        font-size:clamp(2.2rem,8vw,3.2rem);
+        letter-spacing:-1px;
+    }
+
+    .skills-description{
+        max-width:100%;
+        font-size:.95rem;
+        line-height:1.8;
+    }
+
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Hero.css';
-// 1. You imported it as 'profileImage'
 import profileImage from '../assets/profile.jpg';
 
 function Hero() {
@@ -35,7 +34,7 @@ function Hero() {
 
                     <div className="hero-actions">
                         <a href="#projects" className="btn-primary" style={{ textDecoration: 'none' }}>
-                            VIEW MY WORK <span className="arrow">→</span>
+                            VIEW MY WORK <span className="arrow">↓</span>
                         </a>
 
                         <a
@@ -49,15 +48,14 @@ function Hero() {
                     </div>
                 </div>
 
-                {/* Right Image Column with Premium Glow */}
+                {/* Right Image Column: Glow Added Here */}
                 <div className="hero-image-wrapper">
-                    <div className="image-glow-effect">
-                        <img
-                            src={profileImage} /* 2. This must match the import name exactly */
-                            alt="Jaheer - Java Backend Developer"
-                            className="hero-profile-img"
-                        />
-                    </div>
+                    <div className="image-glow-effect"></div>
+                    <img
+                        src={profileImage}
+                        alt="Jaheer - Java Backend Developer"
+                        className="hero-profile-img"
+                    />
                 </div>
 
             </div>

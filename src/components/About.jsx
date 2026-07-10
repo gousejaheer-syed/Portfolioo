@@ -5,17 +5,25 @@ function About() {
     return (
         <div className="about-container">
             <div className="about-wrapper">
+                {/* About Hero */}
+                <div className="about-hero">
+                    <h1 className="about-title">
+                        About Me
+                    </h1>
 
-                {/* Section Heading with precise comment syntax formatting */}
-                <div className="about-header">
-                    <span className="about-eyebrow">// ABOUT ME</span>
-                    <h2 className="about-subtitle">
-                        Building Intelligent Software with <span className="highlight-text">Java</span> & Modern Web Technologies.
-                    </h2>
-                    <p className="about-lead">
-                        I'm <strong className="white-text">Syed Gouse Jaheer</strong>, an AI & Data Science student at BVCE engineering college with a deep passion for architecture and robust backend engineering. I build systems that are clean, stable, and highly performant.
+                    <p className="about-description">
+                        I'm <strong>Syed Gouse Jaheer</strong>, an AI & Data Science student at
+                        BVCE Engineering College with a deep passion for architecture and robust
+                        backend engineering. I build systems that are clean, stable, and highly
+                        performant.
+                    </p>
+
+                    <p className="about-tagline">
+                        Building Intelligent Software with
+                        <span> Java</span> & Modern Web Technologies.
                     </p>
                 </div>
+
 
                 {/* Dense Grid Matrix Container Layout */}
                 <div className="about-grid">

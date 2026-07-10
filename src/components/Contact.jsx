@@ -4,6 +4,18 @@ import './Contact.css';
 function Contact() {
     const links = [
         {
+            label: "PHONE",
+            value: "+91 9989845378",
+            href: "tel:+919989845378",
+            icon: (
+                <svg viewBox="0 0 24 24" width="100%" height="100%">
+                    <rect width="24" height="24" rx="5.5" fill="#34A853" />
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#ffffff" />
+                </svg>
+            ),
+            type: "phone"
+        },
+        {
             label: "EMAIL",
             value: "sgousejaheer@gmail.com",
             href: "https://mail.google.com/mail/?view=cm&fs=1&to=sgousejaheer@gmail.com",
@@ -22,7 +34,6 @@ function Contact() {
             label: "GITHUB",
             value: "@gousejaheer-syed",
             href: "https://github.com/gousejaheer-syed",
-            /* 🌟 MERGED: Official silhouette white on brand #24292E canvas */
             icon: (
                 <svg viewBox="0 0 24 24" width="100%" height="100%">
                     <rect width="24" height="24" rx="5.5" fill="#24292e" />
@@ -47,7 +58,6 @@ function Contact() {
             label: "LOCATION",
             value: "Hyderabad, India",
             href: "https://maps.apple.com/?q=Hyderabad,+India",
-            /* 🌟 MERGED: Official full-bleed Apple Maps grid framework with Interstate 280 crest */
             icon: (
                 <svg viewBox="0 0 24 24" width="100%" height="100%">
                     <defs>
@@ -78,9 +88,10 @@ function Contact() {
     return (
         <section id="contact" className="bg-premium-grey">
             <div className="contact-container">
+
                 <div className="contact-wrapper">
                     <div className="contact-left">
-                        <h2>Let's build something<br />great together</h2>
+                        <h2 className="about-subtitle">Let's build something<br />great together</h2>
                         <p>Open to internships, collaborations, and backend development opportunities. Feel free to reach out.</p>
                         <a
                             href="https://mail.google.com/mail/?view=cm&fs=1&to=sgousejaheer@gmail.com"
