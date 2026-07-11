@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  // Change this to '/' to fix the 404 and MIME errors
-  base: '/',
+  // This tells the browser to look for files in /Portfolioo/
+  base: '/Portfolioo/',
 })
