@@ -5,7 +5,8 @@ import profileImage from '../assets/profile.jpg';
 function Hero() {
     const handleDownloadCV = () => {
         // Because it is in 'public', you use the forward slash '/'
-        const audio = new Audio('/sound.mp3');
+        const audio = new Audio('/sound.mp3' +
+            '');
         audio.play().catch(error => {
             console.error("Audio failed to play:", error);
         });
