@@ -1,8 +1,8 @@
-// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Portfolioo/', // Change 'Portfolioo' to your exact repo name
+  // This tells the browser to look for files in /Portfolioo/
+  base: '/Portfolioo/',
 })
