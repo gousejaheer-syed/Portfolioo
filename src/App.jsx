@@ -4,6 +4,7 @@ import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
+import Certificates from "./components/Certifications.jsx";
 import Experience from "./components/Experience.jsx";
 import Contact from "./components/Contact.jsx";
 import Reveal from "./components/Reveal.jsx";
@@ -23,7 +24,7 @@ function App() {
             <Navbar />
 
             <main>
-                {/* Hero Section */}
+                {/* Home Section */}
                 <section id="home" className="bg-premium-black">
                     <Reveal>
                         <Hero />
@@ -51,15 +52,22 @@ function App() {
                     </Reveal>
                 </section>
 
+                {/* Certifications Section */}
+                <section id="certifications" className="bg-premium-black">
+                    <Reveal delay={0.2}>
+                        <Certificates />
+                    </Reveal>
+                </section>
+
                 {/* Experience Section */}
-                <section id="experience" className="bg-premium-black">
+                <section id="experience" className="bg-premium-grey">
                     <Reveal delay={0.2}>
                         <Experience />
                     </Reveal>
                 </section>
 
                 {/* Contact Section */}
-                <section id="contact" className="bg-premium-grey">
+                <section id="contact" className="bg-premium-black">
                     <Reveal delay={0.2}>
                         <Contact />
                     </Reveal>

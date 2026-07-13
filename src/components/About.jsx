@@ -3,74 +3,121 @@ import './About.css';
 
 function About() {
     return (
-        <div className="about-container">
-            <div className="about-wrapper">
-                {/* About Hero */}
-                <div className="about-hero">
-                    <h1 className="about-title">
-                        About Me
-                    </h1>
+        <section className="about-section section-container">
+            {/* System Biography Hero Heading */}
+            <div className="about-hero">
+                <h2 className="about-title">
+                    About me
+                </h2>
+                <p className="about-description">
+                    Building intelligent software systems with modern web architectures,
+                    focused on clean structures and robust backend engineering profiles.
+                </p>
+            </div>
 
-                    <p className="about-description">
-                        I'm <strong>Syed Gouse Jaheer</strong>, an AI & Data Science student at
-                        BVCE Engineering College with a deep passion for architecture and robust
-                        backend engineering. I build systems that are clean, stable, and highly
-                        performant.
-                    </p>
+            {/* Dashboard Console Layout Split */}
+            <div className="about-layout-grid">
 
-                    <p className="about-tagline">
-                        Building Intelligent Software with
-                        <span> Java</span> & Modern Web Technologies.
-                    </p>
+                {/* Left Column: Core Narrative & Sub-Cards */}
+                <div className="about-left-column">
+                    <div className="narrative-box">
+                        <div className="narrative-header">
+                            <span className="file-name">FILE_NAME: NARRATIVE.TXT</span>
+                            <span className="system-status">SYSTEM_ONLINE</span>
+                        </div>
+                        <p className="narrative-text">
+                            I'm <strong>Syed Gouse Jaheer</strong>, an AI & Data Science student at
+                            BVCE Engineering College with a deep passion for architecture and robust
+                            backend engineering. I build systems that are clean, stable, and highly
+                            performant. My workflow centers on translating complex data structures into seamless application services.
+                        </p>
+                        <div className="about-tagline-glow">
+                            building intelligent software with <span>java</span> & modern web technologies.
+                        </div>
+                    </div>
+
+                    {/* Sub-Cards Stack */}
+                    <div className="sub-cards-stack">
+                        <div className="about-sub-card">
+                            <div className="sub-card-icon-box">⚡</div>
+                            <div className="sub-card-info">
+                                <h3>backend expertise</h3>
+                                <p>solid technical foundation building secure production environments using <strong>java, spring boot, rest apis, and mysql</strong> databases.</p>
+                            </div>
+                        </div>
+
+                        <div className="about-sub-card">
+                            <div className="sub-card-icon-box">🚀</div>
+                            <div className="sub-card-info">
+                                <h3>key projects</h3>
+                                <p>developed an architectural <strong>offline upi payment system</strong> utilizing advanced spring boot systems to secure offline financial capabilities.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                {/* Right Column: 2x2 Metrics Grid & Ambient Badges Console */}
+                <div className="about-right-column">
+                    <div className="metrics-layout-grid">
 
-                {/* Dense Grid Matrix Container Layout */}
-                <div className="about-grid">
+                        {/* Metric 01 */}
+                        <div className="metric-cyber-card">
+                            <div className="metric-card-top">
+                                <div className="metric-icon-wrapper">🎓</div>
+                                <span className="metric-sys-tag">METRIC_01</span>
+                            </div>
+                            <div className="metric-huge-display">DATA SCIENCE</div>
+                            <div className="metric-caption-label">Specialization</div>
+                        </div>
 
-                    {/* Card 1: Core Expertise */}
-                    <div className="about-card">
-                        <div className="card-icon-wrapper">⚡</div>
-                        <h3>Backend Expertise</h3>
-                        <p>Solid technical foundation building secure production environments using <strong>Java, Spring Boot, REST APIs, and MySQL databases</strong>.</p>
+                        {/* Metric 02 */}
+                        <div className="metric-cyber-card">
+                            <div className="metric-card-top">
+                                <div className="metric-icon-wrapper">📈</div>
+                                <span className="metric-sys-tag">METRIC_02</span>
+                            </div>
+                            <div className="metric-huge-display">4+</div>
+                            <div className="metric-caption-label">Hands-on Projects</div>
+                        </div>
+
+                        {/* Metric 03 */}
+                        <div className="metric-cyber-card">
+                            <div className="metric-card-top">
+                                <div className="metric-icon-wrapper">🏛️</div>
+                                <span className="metric-sys-tag">METRIC_03</span>
+                            </div>
+                            <div className="metric-huge-display">Multiple</div>
+                            <div className="metric-caption-label">Hackathons Attended</div>
+                        </div>
+
+                        {/* Metric 04 */}
+                        <div className="metric-cyber-card">
+                            <div className="metric-card-top">
+                                <div className="metric-icon-wrapper">💼</div>
+                                <span className="metric-sys-tag">METRIC_04</span>
+                            </div>
+                            <div className="metric-huge-display">5</div>
+                            <div className="metric-caption-label">Certifications Completed</div>
+                        </div>
+
                     </div>
 
-                    {/* Card 2: Featured Project */}
-                    <div className="about-card">
-                        <div className="card-icon-wrapper">🚀</div>
-                        <h3>Key Projects</h3>
-                        <p>Developed an architectural <strong>Offline UPI Payment System</strong> utilizing advanced Spring Boot architectures to secure transaction capabilities without internet access.</p>
-                    </div>
-
-                    {/* Card 3: Experience & Training */}
-                    <div className="about-card">
-                        <div className="card-icon-wrapper">💼</div>
-                        <h3>Industry Exposure</h3>
-                        <p>Completed hands-on software training and internship tracking pipelines with industry giants like <strong>ServiceNow</strong>.</p>
-                    </div>
-
-                    {/* Card 4: Academic Foundation */}
-                    <div className="about-card">
-                        <div className="card-icon-wrapper">🎓</div>
-                        <h3>Education & Metrics</h3>
-                        <p>Pursuing AI & Data Science at BVCE. Holds a foundational engineering Diploma from KIET and achieved a stellar <strong>9.7 GPA</strong> in SSC.</p>
-                    </div>
-
-                </div>
-
-                {/* Credentials & Badges Section with Luxury Ambient Breathing Animation */}
-                <div className="about-badges-section">
-                    <h4>Verified Credentials & Badges</h4>
-                    <div className="badge-row">
-                        <span className="premium-animate-badge">Oracle Certified</span>
-                        <span className="premium-animate-badge">JPMorgan Chase Eng</span>
-                        <span className="premium-animate-badge">NPTEL IIT Madras</span>
-                        <span className="premium-animate-badge">AWS Cloud Foundations</span>
+                    {/* Bottom Right Badges Deck */}
+                    <div className="badges-console-box">
+                        <div className="console-quote-text">
+                            "verified secure credentials & professional platform achievements mapping"
+                        </div>
+                        <div className="about-badge-flex-row">
+                            <span className="premium-animate-badge">Oracle Certified</span>
+                            <span className="premium-animate-badge">JPMorgan Chase Eng</span>
+                            <span className="premium-animate-badge">NPTEL IIT Madras</span>
+                            <span className="premium-animate-badge">AWS Cloud Foundations</span>
+                        </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Ensure you've run: npm install react-icons
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './Navbar.css';
 
-// Wraps an icon link: subtle magnetic cursor-follow + soft glow — restrained, premium feel
+// Wraps an icon link
 function MagneticIcon({ href, children }) {
     const ref = useRef(null);
     const [transform, setTransform] = useState('translate(0px, 0px) scale(1)');
     const [isHovered, setIsHovered] = useState(false);
 
-    const MAX_PULL = 6; // px — keeps the motion tight and controlled, not flying around
+    const MAX_PULL = 6;
 
     const handleMouseMove = (e) => {
         const el = ref.current;
@@ -25,7 +25,6 @@ function MagneticIcon({ href, children }) {
     };
 
     const handleMouseEnter = () => setIsHovered(true);
-
     const handleMouseLeave = () => {
         setIsHovered(false);
         setTransform('translate(0px, 0px) scale(1)');
@@ -43,7 +42,6 @@ function MagneticIcon({ href, children }) {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            <span className="social-icon-glow" />
             <span className="social-icon-glyph">{children}</span>
         </a>
     );
@@ -51,8 +49,7 @@ function MagneticIcon({ href, children }) {
 
 function Navbar() {
     const [activeItem, setActiveItem] = useState('home');
-    // In Navbar.jsx, ensure this is exactly as shown:
-    const navSections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
+    const navSections = ['home', 'about', 'skills', 'projects', 'certifications', 'experience', 'contact'];
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -63,10 +60,7 @@ function Navbar() {
                     }
                 });
             },
-            {
-                rootMargin: '-45% 0px -45% 0px',
-                threshold: 0
-            }
+            { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
         );
 
         navSections.forEach((id) => {
@@ -80,13 +74,10 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-container">
-
-                {/* Brand Logo */}
                 <div className="navbar-brand">
                     <span className="brand-text">PORTFOLIO</span>
                 </div>
 
-                {/* Navigation Links */}
                 <ul className="navbar-links">
                     {navSections.map((id) => (
                         <li key={id}>
@@ -100,8 +91,25 @@ function Navbar() {
                     ))}
                 </ul>
 
-                {/* Social Icons — magnetic hover + glow */}
-                <div className="navbar-actions">
+                {/* Social Icons + Liquid Effect Container */}
+                <div className="navbar-actions" style={{ position: 'relative' }}>
+
+                    {/* SVG Filter for the Liquid Effect */}
+                    <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+                        <defs>
+                            <filter id="navbar-goo">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                            </filter>
+                        </defs>
+                    </svg>
+
+                    {/* Droplet Animation Layer */}
+                    <div className="navbar-liquid-container">
+                        <div className="liquid-droplet liquid-droplet-1"></div>
+                        <div className="liquid-droplet liquid-droplet-2"></div>
+                    </div>
+
                     <MagneticIcon href="https://github.com/gousejaheer-syed">
                         <FaGithub />
                     </MagneticIcon>
@@ -109,7 +117,6 @@ function Navbar() {
                         <FaLinkedin />
                     </MagneticIcon>
                 </div>
-
             </div>
         </nav>
     );

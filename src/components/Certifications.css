@@ -1,0 +1,298 @@
+/* ==========================================================================
+   Certifications Base Layout
+   ========================================================================== */
+.certifications-section {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+/* ==========================================================================
+   Hero Global Section Headers (Perfectly matches Image 1)
+   ========================================================================== */
+.certifications-hero {
+    text-align: center;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.certifications-label {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(3rem, 5.5vw, 4.6rem); /* Matches the prominent size of Image 1 */
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em; /* Tight premium tracking */
+    background: linear-gradient(180deg, #ffffff 35%, #a2a8ab 100%); /* Metallic look */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.certifications-title {
+    margin-top: 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.certifications-description {
+    margin: 1.2rem auto 0;
+    max-width: 760px;
+    color: #808a84;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    letter-spacing: -0.2px;
+}
+
+/* ==========================================================================
+   Grid System (Matches 3-Column Landscape Layout)
+   ========================================================================== */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 3.5rem;
+}
+
+/* ==========================================================================
+   Flat Premium Box Sizing & Styles (No Shadows)
+   ========================================================================== */
+.certifications-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px; /* Exact landscape sizing from your screenshot */
+    padding: 2.2rem 2rem;
+    border-radius: 16px;
+    background: #09130e;
+    border: 1px solid rgba(47, 163, 107, 0.12);
+    box-shadow: none !important;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.certifications-card:hover {
+    border-color: rgba(47, 163, 107, 0.35);
+    background: #0d1b14;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================
+   Top Header Elements
+   ========================================================================== */
+.certifications-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cert-period {
+    color: #2fa36b;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Premium Minimalist Badge System & Smooth Animations
+   ========================================================================== */
+.cert-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(47, 163, 107, 0.06);
+    border: 1px solid rgba(47, 163, 107, 0.15);
+    color: rgba(47, 163, 107, 0.6);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.certifications-card:hover .cert-badge {
+    transform: scale(1.12) rotate(180deg);
+    color: #2fa36b;
+    background: rgba(47, 163, 107, 0.15);
+    border-color: rgba(47, 163, 107, 0.4);
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+.cert-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.cert-title {
+    color: #ffffff;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.3px;
+}
+
+.cert-issuer {
+    color: #68736d;
+    font-size: 0.92rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   Action Link Styling
+   ========================================================================== */
+.cert-link {
+    width: fit-content;
+    padding: 0;
+    border: none;
+    background: none;
+    color: rgba(47, 163, 107, 0.8);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.certifications-card:hover .cert-link {
+    color: #3ae293;
+}
+
+/* ==========================================================================
+   Verification Modal Systems
+   ========================================================================== */
+.verify-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 8, 6, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    z-index: 1000;
+}
+
+.verify-modal {
+    width: 100%;
+    max-width: 480px;
+    background: #070e0b;
+    border: 1px solid rgba(47, 163, 107, 0.2);
+    border-radius: 20px;
+    padding: 2.2rem;
+}
+
+.verify-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(47, 163, 107, 0.08);
+    border: 1px solid rgba(47, 163, 107, 0.2);
+    color: #2fa36b;
+}
+
+.verify-status {
+    text-align: center;
+    color: #2fa36b;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 0.6rem;
+}
+
+.verify-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.verify-subtitle {
+    color: #808a84;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.8rem;
+}
+
+.verify-info {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(47, 163, 107, 0.08);
+    border-radius: 12px;
+    padding: 0.5rem 1.2rem;
+    margin-bottom: 1.8rem;
+}
+
+.verify-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 0.85rem;
+}
+
+.verify-row:last-child {
+    border-bottom: none;
+}
+
+.verify-label {
+    color: #68736d;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.verify-value {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.verify-valid {
+    color: #2fa36b;
+    font-weight: 600;
+}
+
+
+.close-verify:hover {
+    background: rgba(47, 163, 107, 0.18);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .certifications-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 730px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+    }
+    .certifications-card {
+        height: auto;
+        min-height: 220px;
+    }
+}
