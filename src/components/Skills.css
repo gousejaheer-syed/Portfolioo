@@ -496,3 +496,122 @@ img[alt="macOS logo"] {
     }
 
 }
+/* === Skill pill hover-loading effect (additive) === */
+.skill-pill {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.skill-pill::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0%;
+    background: linear-gradient(90deg, rgba(90, 200, 140, 0.22), rgba(90, 200, 140, 0.08));
+    z-index: -1;
+    transition: width 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+}
+
+/* default fill targets — feel free to tweak per pill later */
+.skill-pill:nth-child(4n+1)::after { width: 0%; }
+.skills-card:hover .skill-pill:nth-child(4n+1)::after { width: 90%; }
+
+.skill-pill:nth-child(4n+2)::after { width: 0%; }
+.skills-card:hover .skill-pill:nth-child(4n+2)::after { width: 80%; }
+
+.skill-pill:nth-child(4n+3)::after { width: 0%; }
+.skills-card:hover .skill-pill:nth-child(4n+3)::after { width: 70%; }
+
+.skill-pill:nth-child(4n+4)::after { width: 0%; }
+.skills-card:hover .skill-pill:nth-child(4n+4)::after { width: 85%; }
+
+/* stagger the fills slightly so they don't all load in sync */
+.skill-pill:nth-child(2)::after { transition-delay: 0.08s; }
+.skill-pill:nth-child(3)::after { transition-delay: 0.16s; }
+.skill-pill:nth-child(4)::after { transition-delay: 0.24s; }
+.skill-pill:nth-child(5)::after { transition-delay: 0.32s; }
+
+/* tiny extra life on the logos when the card is hovered — layers on top of whatever bounce you already have */
+.skills-card:hover .pill-logo {
+    filter: brightness(1.15);
+    transform: scale(1.08);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.pill-pct {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.skills-card:hover .pill-pct {
+    opacity: 1;
+}
+
+.skill-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px; /* Consistent padding */
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* No transitions on width/padding/margin prevents resizing */
+    cursor: default;
+}
+
+/* Ensure the pill-pct is ALWAYS in the flow but invisible */
+.pill-pct {
+    opacity: 0; /* Hidden, but takes up space! */
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #64ffda;
+    transition: opacity 0.3s ease; /* Smooth fade in */
+    white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* On hover, just reveal the text */
+.skill-pill:hover .pill-pct {
+    opacity: 1;
+}
+
+/* If you want the fill animation, keep it absolute */
+.pill-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: rgba(100, 255, 218, 0.15);
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+    border-radius: 50px;
+}
+
+.skill-pill:hover .pill-fill {
+    width: var(--target);
+}
+.skill-pill {
+    position: relative; /* This keeps the percentage inside the pill's boundaries */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 35px 8px 16px; /* Added extra padding-right (35px) for the percentage space */
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap; /* Prevents the pill from breaking lines */
+    cursor: default;
+}
+
+.pill-pct {
+    position: absolute; /* Removes text from the layout flow */
+    right: 12px;        /* Positions text to the far right */
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #64ffda;     /* Or your preferred accent color */
+    pointer-events: none;
+}
