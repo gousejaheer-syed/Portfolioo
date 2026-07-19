@@ -30,6 +30,11 @@ function MagneticIcon({ href, children }) {
         setTransform('translate(0px, 0px) scale(1)');
     };
 
+    // Toggle on click for touch devices
+    const handleTouch = () => {
+        setIsHovered(!isHovered);
+    };
+
     return (
         <a
             ref={ref}
@@ -39,8 +44,9 @@ function MagneticIcon({ href, children }) {
             className={`social-icon ${isHovered ? 'is-hovered' : ''}`}
             style={{ transform }}
             onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            onMouseMove={handleMouseMove}
+            onClick={handleTouch}
         >
             <span className="social-icon-glyph">{children}</span>
         </a>
@@ -91,10 +97,7 @@ function Navbar() {
                     ))}
                 </ul>
 
-                {/* Social Icons + Liquid Effect Container */}
-                <div className="navbar-actions" style={{ position: 'relative' }}>
-
-                    {/* SVG Filter for the Liquid Effect */}
+                <div className="navbar-actions">
                     <svg style={{ position: 'absolute', width: 0, height: 0 }}>
                         <defs>
                             <filter id="navbar-goo">
@@ -104,7 +107,6 @@ function Navbar() {
                         </defs>
                     </svg>
 
-                    {/* Droplet Animation Layer */}
                     <div className="navbar-liquid-container">
                         <div className="liquid-droplet liquid-droplet-1"></div>
                         <div className="liquid-droplet liquid-droplet-2"></div>

@@ -1,44 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
 
 :root {
-    /* Backgrounds */
-    --bg-secondary: #111A17;
-    --bg-elevated: #18231F;
-
-    /* Accent */
+    --bg-navbar: rgba(17, 26, 23, 0.65);
     --accent-primary: #2FA36B;
-    --accent-hover: #39B97B;
-    --accent-deep: #217A4F;
-    --accent-glow: rgba(47,163,107,.30);
-
-    /* Secondary */
-    --secondary: #60756D;
-    --secondary-light: #83978F;
-
-    /* Text */
     --text-heading: #F5FAF8;
     --text-body: #B2C3BB;
-    --text-muted: #74867F;
-
-    /* Borders */
-    --border-subtle: rgba(255,255,255,.07);
-    --border-accent: rgba(47,163,107,.35);
-
-    /* Fonts */
     --font-mono: 'SF Mono', 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
 }
 
-/* ==========================================================================
-   Navbar — frosted glass, premium feel
-   ========================================================================== */
-
+/* Base Styles */
 .navbar {
     position: sticky;
-    top: 1.5rem;
+    top: clamp(0.5rem, 2vw, 1.2rem);
     z-index: 100;
     display: flex;
     justify-content: center;
-    padding: 0 2rem;
+    padding: 0 clamp(0.5rem, 2vw, 2rem);
+    width: 100%;
 }
 
 .navbar-container {
@@ -47,90 +25,48 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
-    padding: 0.85rem 1.5rem;
+    gap: clamp(0.5rem, 2vw, 2.5rem);
+    padding: clamp(0.5rem, 1vw, 0.6rem) clamp(1rem, 2vw, 1.75rem);
 
-    background: linear-gradient(
-            180deg,
-            rgba(245,250,248,.08),
-            rgba(245,250,248,.03)
-    );
-
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-
-    border: 1px solid var(--border-subtle);
+    background: var(--bg-navbar);
+    backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
-
-    box-shadow:
-            0 10px 40px rgba(0,0,0,.45),
-            0 1px 0 rgba(245,250,248,.06) inset,
-            0 -1px 0 rgba(0,0,0,.2) inset;
-
-    transition:
-            background .35s ease,
-            border-color .35s ease,
-            box-shadow .35s ease;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar-container:hover {
-    border-color: var(--border-accent);
-
-    box-shadow:
-            0 12px 48px rgba(0,0,0,.5),
-            0 1px 0 rgba(245,250,248,.09) inset,
-            0 -1px 0 rgba(0,0,0,.2) inset;
+    background: rgba(17, 26, 23, 0.8);
+    border-color: rgba(47, 163, 107, 0.5);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
 }
 
-/* ---- Brand ---- */
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    flex-shrink: 0;
-}
-
+/* Brand */
 .brand-text {
     font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 4px;
-    text-transform: uppercase;
+    font-size: clamp(0.85rem, 1.5vw, 1.15rem);
+    letter-spacing: clamp(1px, 0.2vw, 3px);
     color: var(--text-heading);
+    text-transform: uppercase;
 }
 
-/* ---- Links (Apple-style system mono) ---- */
-
+/* Links */
 .navbar-links {
     display: flex;
     align-items: center;
-    gap: 0;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .nav-item {
-    position: relative;
-    display: inline-block;
-    padding: 0.5rem 2rem;
-
+    padding: 0.4rem 1.25rem;
     font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-
+    font-size: 0.8rem;
     color: var(--text-body);
     text-decoration: none;
-
-    transition:
-            color .25s ease,
-            font-weight .25s ease;
-}
-
-.nav-item:hover {
-    color: var(--text-heading);
+    transition: color .25s ease;
 }
 
 .nav-item.active {
@@ -138,231 +74,41 @@
     font-weight: 600;
 }
 
-/* ---- Responsiveness ---- */
-
-@media (max-width: 900px) {
-    .navbar-links {
-        display: none;
-    }
-}
-
-@media (max-width: 640px) {
-    .navbar {
-        padding: 0 1rem;
-        top: 1rem;
-    }
-    .navbar-container {
-        padding: 0.7rem 1.1rem;
-    }
-    .brand-text {
-        font-size: 1rem;
-    }
-}
-
-/* Fallback */
-
-@supports not (backdrop-filter: blur(1px)) {
-    .navbar-container {
-        background: rgba(8,17,14,.92);
-    }
-}
-
-/* ==========================================================================
-   Social icons — pure white, magnetic hover + glowing halo
-   ========================================================================== */
-
+/* Actions */
 .navbar-actions {
     display: flex;
-    gap: 1.75rem;
+    gap: 1.5rem;
     align-items: center;
 }
 
 .social-icon {
     position: relative;
-    color: var(--secondary-light);
+    color: #83978F;
     font-size: 1.35rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.2rem;
-    height: 2.2rem;
-    opacity: 0.75;
-
-    /* Springy, premium feel for the magnetic pull driven by inline transform in JSX */
-    transition:
-            transform .5s cubic-bezier(.34, 1.56, .64, 1),
-            opacity .3s ease,
-            color .3s ease;
+    transition: transform .5s cubic-bezier(.34, 1.56, .64, 1), color .3s ease;
 }
 
-.social-icon:hover,
 .social-icon.is-hovered {
     color: #FFFFFF;
-    opacity: 1;
 }
 
-/* Icon glyph sits above the glow */
-.social-icon-glyph {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
-    transition: filter .4s ease;
+/* --- Breakpoints --- */
+
+/* Small Desktop (≤ 1024px) */
+@media (max-width: 1024px) {
+    .navbar-container { gap: 1rem; }
 }
 
-.social-icon.is-hovered .social-icon-glyph {
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.85));
-}
-/* ==========================================================================
-   Navbar — Ultimate Premium Rich & Compact Mix
-   ========================================================================== */
-
-.navbar {
-    position: sticky;
-    top: 1.2rem; /* Brought slightly closer to top of viewport */
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    padding: 0 2rem;
+/* Tablet (≤ 768px) */
+@media (max-width: 768px) {
+    .navbar-links { display: none; } /* Hide main nav */
 }
 
-.navbar-container {
-    width: auto; /* Allow container to wrap tight instead of stretching 100% */
-    min-width: 760px; /* Ensures gorgeous layout proportion on desktop */
-    max-width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2.5rem; /* Tightened gap between sections */
-    padding: 0.6rem 1.75rem; /* Sleeker vertical density */
-
-    /* Advanced Premium Glassmorphism Depth Layering */
-    background: linear-gradient(
-            180deg,
-            rgba(17, 26, 23, 0.65) 0%,
-            rgba(24, 35, 31, 0.40) 100%
-    );
-
-    backdrop-filter: blur(30px) saturate(210%);
-    -webkit-backdrop-filter: blur(30px) saturate(210%);
-
-    /* High-contrast crisp border edges */
-    border: 1px solid rgba(255, 255, 255, 0.11);
-    border-radius: 999px;
-
-    box-shadow:
-            0 20px 50px rgba(0, 0, 0, 0.65),
-            0 0 0 1px rgba(47, 163, 107, 0.15), /* Subtle accent ring glow */
-            0 1px 0 rgba(255, 255, 255, 0.12) inset;
-
-    transition:
-            background .35s ease,
-            border-color .35s ease,
-            box-shadow .35s ease,
-            transform .35s ease;
+/* Mobile (≤ 480px) */
+@media (max-width: 480px) {
+    .navbar { top: 0.5rem; }
+    .navbar-container { padding: 0.5rem 1rem; }
+    .navbar-actions { gap: 1rem; }
+    .brand-text { font-size: 0.85rem; }
 }
-
-.navbar-container:hover {
-    border-color: var(--accent-primary);
-    background: linear-gradient(
-            180deg,
-            rgba(17, 26, 23, 0.75) 0%,
-            rgba(24, 35, 31, 0.50) 100%
-    );
-    box-shadow:
-            0 24px 60px rgba(0, 0, 0, 0.75),
-            0 0 15px rgba(47, 163, 107, 0.25), /* Active edge bloom */
-            0 1px 0 rgba(255, 255, 255, 0.15) inset;
-}
-
-/* ---- Brand (Compact Tuning) ---- */
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: .4rem;
-    flex-shrink: 0;
-    margin-right: 0.5rem; /* Shifts logo close to links */
-}
-
-.brand-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem; /* Cleaned up sizing */
-    font-weight: 500;
-    letter-spacing: 3px; /* Slightly compact tracking */
-    text-transform: uppercase;
-    color: var(--text-heading);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-
-/* ---- Links (High-End Density Tuning) ---- */
-
-.navbar-links {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem; /* Holds structural integrity */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-item {
-    position: relative;
-    display: inline-block;
-    padding: 0.4rem 1.25rem; /* Reduced horizontal sprawl from 2rem down to 1.25rem */
-
-    font-family: var(--font-mono);
-    font-size: 0.80rem;
-    font-weight: 500;
-    letter-spacing: -0.01em;
-
-    color: var(--text-body);
-    text-decoration: none;
-
-    transition:
-            color .25s ease,
-            text-shadow .25s ease;
-}
-
-.nav-item:hover {
-    color: var(--text-heading);
-    text-shadow: 0 0 8px rgba(255,255,255,0.3);
-}
-
-.nav-item.active {
-    color: var(--accent-primary);
-    font-weight: 600;
-    text-shadow: 0 0 12px var(--accent-glow);
-}
-
-/* ---- Responsiveness Adjustments ---- */
-
-@media (max-width: 900px) {
-    .navbar-container {
-        min-width: 0;
-        width: 100%;
-    }
-    .navbar-links {
-        display: none;
-    }
-}
-
-@media (max-width: 640px) {
-    .navbar {
-        padding: 0 1rem;
-        top: 1rem;
-    }
-    .navbar-container {
-        padding: 0.6rem 1.2rem;
-    }
-    .brand-text {
-        font-size: 1rem;
-        letter-spacing: 2px;
-    }
-}
-.social-icon.is-hovered .social-icon-glow {
-    opacity: 1;
-    transform: scale(1);
-}
-
-

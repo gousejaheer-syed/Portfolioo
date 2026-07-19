@@ -1,0 +1,296 @@
+.path-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 480px;
+    margin: 3rem auto;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.path-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.path-line {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 6;
+    stroke-linecap: round;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 3s linear;
+}
+
+.path-wrap.play .path-line {
+    stroke-dashoffset: 0;
+}
+
+.path-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.path-dot-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-primary, #0a0a0a);
+    border: 2px solid var(--accent-primary, #2fa36b);
+    box-shadow: 0 0 0 3px rgba(47, 163, 107, 0.1), 0 0 10px rgba(47, 163, 107, 0.3);
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+    z-index: 2;
+}
+
+.path-node.hit .path-dot-marker {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-color: var(--accent-hover, #8ee6b8);
+    box-shadow: 0 0 0 6px rgba(47, 163, 107, 0.2), 0 0 22px rgba(47, 163, 107, 0.75);
+}
+
+.path-text {
+    position: absolute;
+    top: -22px;
+    width: 210px;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    line-height: 1.3;
+}
+
+.path-node.hit .path-text {
+    opacity: 1;
+}
+
+/* dot near right edge → text pulls left, toward center */
+.path-node--left .path-text {
+    right: 22px;
+    text-align: right;
+}
+
+/* dot near left edge → text pulls right, toward center */
+.path-node--right .path-text {
+    left: 22px;
+    text-align: left;
+}
+
+.path-year {
+    color: var(--text-muted, #5C594F);
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+    display: block;
+}
+
+.path-title {
+    color: var(--text-heading, #F7F5F2);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 2px 0;
+    line-height: 1.25;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.path-node:hover .path-title,
+.path-node:active .path-title {
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.path-desc {
+    color: var(--text-body, #9C9891);
+    font-size: 0.66rem;
+    margin: 0;
+}
+
+@media (max-width: 480px) {
+    .path-wrap { max-width: 100%; height: auto; }
+    .path-svg { display: none; }
+    .path-node {
+        position: static;
+        transform: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 2rem;
+    }
+    .path-dot-marker { position: relative; transform: none; margin-top: 4px; flex-shrink: 0; }
+    .path-text {
+        position: static;
+        width: auto;
+        opacity: 1;
+        text-align: left !important;
+    }
+}
+.path-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: clamp(380px, 90vw, 480px);
+    margin: 3rem auto;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.path-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.path-line {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 6;
+    stroke-linecap: round;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 3s linear;
+}
+
+.path-wrap.play .path-line {
+    stroke-dashoffset: 0;
+}
+
+.path-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.path-dot-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: clamp(11px, 3.5vw, 16px);
+    height: clamp(11px, 3.5vw, 16px);
+    border-radius: 50%;
+    background: var(--bg-primary, #0a0a0a);
+    border: 2px solid var(--accent-primary, #2fa36b);
+    box-shadow: 0 0 0 3px rgba(47, 163, 107, 0.1), 0 0 10px rgba(47, 163, 107, 0.3);
+    transform: translate(-50%, -50%);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+    z-index: 2;
+}
+
+.path-node.hit .path-dot-marker {
+    transform: translate(-50%, -50%) scale(1.5);
+    border-color: var(--accent-hover, #8ee6b8);
+    box-shadow: 0 0 0 6px rgba(47, 163, 107, 0.2), 0 0 22px rgba(47, 163, 107, 0.75);
+}
+
+.path-text {
+    position: absolute;
+    top: -22px;
+    width: clamp(120px, 42vw, 210px);
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    line-height: 1.3;
+}
+
+.path-node.hit .path-text {
+    opacity: 1;
+}
+
+.path-node--left .path-text {
+    right: clamp(14px, 4vw, 22px);
+    text-align: right;
+}
+
+.path-node--right .path-text {
+    left: clamp(14px, 4vw, 22px);
+    text-align: left;
+}
+
+.path-year {
+    color: var(--text-muted, #5C594F);
+    font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+    letter-spacing: 0.03em;
+    display: block;
+}
+
+.path-title {
+    color: var(--text-heading, #F7F5F2);
+    font-weight: 600;
+    font-size: clamp(0.74rem, 2.4vw, 0.9rem);
+    margin: 2px 0;
+    line-height: 1.25;
+    display: inline-block;
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.path-node:hover .path-title,
+.path-node:active .path-title {
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.path-desc {
+    color: var(--text-body, #9C9891);
+    font-size: clamp(0.56rem, 1.7vw, 0.66rem);
+    margin: 0;
+}
+
+/* === Tablet: shrink the path container itself, keep the curve layout === */
+@media (max-width: 768px) {
+    .path-wrap {
+        max-width: 340px;
+    }
+}
+
+/* === Mobile: drop the curve entirely, stack as a clean left-border list === */
+@media (max-width: 480px) {
+    .path-wrap {
+        max-width: 100%;
+        height: auto;
+    }
+    .path-svg {
+        display: none;
+    }
+    .path-node {
+        position: static;
+        transform: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 2rem;
+    }
+    .path-dot-marker {
+        position: relative;
+        width: 14px;
+        height: 14px;
+        transform: none;
+        margin-top: 4px;
+        flex-shrink: 0;
+    }
+    .path-node.hit .path-dot-marker {
+        transform: scale(1.3);
+    }
+    .path-text {
+        position: static;
+        width: auto;
+        opacity: 1;
+        text-align: left !important;
+    }
+    .path-year {
+        font-size: 0.66rem;
+    }
+    .path-title {
+        font-size: 0.88rem;
+    }
+    .path-desc {
+        font-size: 0.66rem;
+    }
+}
+
+/* === Very small phones: tighten spacing further === */
+@media (max-width: 360px) {
+    .path-node {
+        gap: 10px;
+        margin-bottom: 1.5rem;
+    }
+}

@@ -304,3 +304,9 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
 }
+
+.narrative-box {
+    border: none !important;
+    border-left: none !important; /* This removes the green side accent */
+    box-shadow: none !important;  /* Optional: remove this if you also want to remove the glow/shadow */
+}
