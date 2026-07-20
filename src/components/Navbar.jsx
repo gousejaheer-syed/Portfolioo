@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './Navbar.css';
 
-// Wraps an icon link
+// --- Magnetic Icon Component ---
 function MagneticIcon({ href, children }) {
     const ref = useRef(null);
     const [transform, setTransform] = useState('translate(0px, 0px) scale(1)');
@@ -30,7 +30,6 @@ function MagneticIcon({ href, children }) {
         setTransform('translate(0px, 0px) scale(1)');
     };
 
-    // Toggle on click for touch devices
     const handleTouch = () => {
         setIsHovered(!isHovered);
     };
@@ -53,10 +52,18 @@ function MagneticIcon({ href, children }) {
     );
 }
 
+// --- Main Navbar Component ---
 function Navbar() {
     const [activeItem, setActiveItem] = useState('home');
     const navSections = ['home', 'about', 'skills', 'projects', 'certifications', 'experience', 'contact'];
 
+    // Refs for pill animation
+    const navListRef = useRef(null);
+    const linkRefs = useRef({});
+    const pillRef = useRef(null);
+    const prevPos = useRef(null);
+
+    // Track active section via scrolling
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -77,6 +84,62 @@ function Navbar() {
         return () => observer.disconnect();
     }, []);
 
+    // Liquid pill movement logic
+    const movePill = useCallback((instant = false) => {
+        const pill = pillRef.current;
+        const list = navListRef.current;
+        const target = linkRefs.current[activeItem];
+        if (!pill || !list || !target) return;
+
+        const listRect = list.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+
+        const endLeft = targetRect.left - listRect.left;
+        const endWidth = targetRect.width;
+
+        if (instant || !prevPos.current) {
+            pill.style.transition = 'none';
+            pill.style.left = `${endLeft}px`;
+            pill.style.width = `${endWidth}px`;
+            pill.style.transform = 'scaleY(1)';
+            void pill.offsetWidth;
+            pill.style.transition = '';
+            prevPos.current = { left: endLeft, width: endWidth };
+            return;
+        }
+
+        const startLeft = prevPos.current.left;
+        const startWidth = prevPos.current.width;
+        const travelDist = Math.abs(endLeft - startLeft);
+        const stretch = Math.min(travelDist * 0.35, 40);
+
+        const midLeft = Math.min(startLeft, endLeft);
+        const midWidth = Math.max(startWidth, endWidth) + travelDist * 0.5 + stretch;
+
+        pill.style.left = `${midLeft}px`;
+        pill.style.width = `${midWidth}px`;
+        pill.style.transform = 'scaleY(0.82)';
+
+        window.setTimeout(() => {
+            pill.style.left = `${endLeft}px`;
+            pill.style.width = `${endWidth}px`;
+            pill.style.transform = 'scaleY(1)';
+            prevPos.current = { left: endLeft, width: endWidth };
+        }, 190);
+    }, [activeItem]);
+
+    // Update pill on section change
+    useEffect(() => {
+        movePill(prevPos.current === null);
+    }, [activeItem, movePill]);
+
+    // Update pill on window resize
+    useEffect(() => {
+        const onResize = () => movePill(true);
+        window.addEventListener('resize', onResize);
+        return () => window.removeEventListener('resize', onResize);
+    }, [movePill]);
+
     return (
         <nav className="navbar">
             <div className="navbar-container">
@@ -84,11 +147,13 @@ function Navbar() {
                     <span className="brand-text">PORTFOLIO</span>
                 </div>
 
-                <ul className="navbar-links">
+                <ul className="navbar-links" ref={navListRef}>
+                    <div className="nav-pill" ref={pillRef} />
                     {navSections.map((id) => (
                         <li key={id}>
                             <a
                                 href={`#${id}`}
+                                ref={(el) => { linkRefs.current[id] = el; }}
                                 className={`nav-item ${activeItem === id ? 'active' : ''}`}
                             >
                                 {id.charAt(0).toUpperCase() + id.slice(1)}
@@ -98,6 +163,7 @@ function Navbar() {
                 </ul>
 
                 <div className="navbar-actions">
+                    {/* SVG Gooey Filter */}
                     <svg style={{ position: 'absolute', width: 0, height: 0 }}>
                         <defs>
                             <filter id="navbar-goo">

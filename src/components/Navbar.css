@@ -112,3 +112,62 @@
     .navbar-actions { gap: 1rem; }
     .brand-text { font-size: 0.85rem; }
 }
+.navbar-links {
+    position: relative;
+}
+
+.nav-pill {
+    position: absolute;
+    top: 50%;
+    height: 34px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background: rgba(47, 163, 107, 0.15);
+    border: 1px solid rgba(47, 163, 107, 0.4);
+    box-shadow: 0 0 14px rgba(47, 163, 107, 0.15);
+    pointer-events: none;
+    z-index: 0;
+    transition: left 0.19s cubic-bezier(0.65, -0.4, 0.35, 1.4),
+    width 0.19s cubic-bezier(0.65, -0.4, 0.35, 1.4),
+    transform 0.19s ease;
+    transform-origin: center;
+}
+
+.nav-item {
+    position: relative;
+    z-index: 1;
+}
+.navbar-links {
+    position: relative; /* Important: keeps the pill inside the menu */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Optional: adds space between your links */
+}
+
+.nav-pill {
+    position: absolute;
+    height: 36px;
+
+    /* VERTICAL CENTERING FIX (No transform) */
+    top: 50%;
+    margin-top: -18px; /* Exactly half of the 36px height */
+
+    /* VISUAL STYLE */
+    background: rgba(255, 255, 255, 0.1); /* Adds the solid background */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+    border-radius: 20px;
+    z-index: 0;
+    pointer-events: none;
+
+    /* Only transition left and width so JS can safely handle the stretch */
+    transition: left 0.3s ease, width 0.3s ease;
+}
+
+.nav-item {
+    position: relative;
+    z-index: 1; /* Keeps text above the pill */
+    padding: 8px 16px; /* Makes the JS calculate a wider box */
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
